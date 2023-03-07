@@ -1,0 +1,89 @@
+{% extends 'base.html'%}
+
+{% load static%}
+
+{% block content %}
+<style media="screen">
+  body {
+    margin : 0;
+}
+
+.outer-container {
+    position : absolute;
+    display: table;
+    width: 100%; /* This could be ANY width */
+    height: 100%; /* This could be ANY height */
+    background:#f7cac9 ;
+}
+
+.inner-container {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.centered-content {
+    display: inline-block;
+    text-align: left;
+    background: #fff;
+    padding : 20px;
+    border : 1px solid #000;
+}
+.header {
+  padding: 10px;
+  text-align: center;
+  background: #98b4d4;
+  color: white;
+  font-size: 30px;
+}
+</style>
+<div class="outer-container">
+
+
+  <div class="inner-container" style="">
+        <a href="{% static 'template.xlsx' %}">Click here to download template</a>
+  </div>
+
+  <div class="">
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <div class="header">
+                <h5>Import Questions to Database by uploading Excel File</h5>
+              </div>
+
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <div class="col-md-8 col-sm-12 col-xs-12 form-group">
+              </div>
+                    <input type="file" name="myfile" class="form-control">
+                             <button type="submit" class="btn btn-success" >Upload Questions</button>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+  </form>
+
+</div>
+
+<div class="">
+  {% if messages %}
+<ul class="messages">
+{% for message in messages %}
+<li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+{% endfor %}
+</ul>
+{% endif %}
+</div>
+</div>
+{% endblock %}

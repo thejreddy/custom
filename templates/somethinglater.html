@@ -1,0 +1,130 @@
+score1011= await data.scoresa[0].sub_code_score_101_1
+score1021= await data.scoresa[0].sub_code_score_102_1
+score1031 = await data.scoresa[0].sub_code_score_103_1
+score1041 = await data.scoresa[0].sub_code_score_104_1
+score1051 = await data.scoresa[0].sub_code_score_105_1
+score1061 = await data.scoresa[0].sub_code_score_106_1
+score1071 = await data.scoresa[0].sub_code_score_107_1
+score1081 = await data.scoresa[0].sub_code_score_108_1
+score1091 = await data.scoresa[0].sub_code_score_109_1
+score10101 = await data.scoresa[0].sub_code_score_110_1
+score10111 = await data.scoresa[0].sub_code_score_111_1
+score10121 = await data.scoresa[0].sub_code_score_112_1
+score10131 = await data.scoresa[0].sub_code_score_113_1
+score10141 = await data.scoresa[0].sub_code_score_114_1
+score10151 = await data.scoresa[0].sub_code_score_115_1
+score1012= await data.scoresa[0].sub_code_score_101_2
+score1022= await data.scoresa[0].sub_code_score_102_2
+score1032 = await data.scoresa[0].sub_code_score_103_2
+score1042 = await data.scoresa[0].sub_code_score_104_2
+score1052 = await data.scoresa[0].sub_code_score_105_2
+score1062 = await data.scoresa[0].sub_code_score_106_2
+score1072 = await data.scoresa[0].sub_code_score_107_2
+score1082 = await data.scoresa[0].sub_code_score_108_2
+score1092 = await data.scoresa[0].sub_code_score_109_2
+score10102 = await data.scoresa[0].sub_code_score_110_2
+score10112 = await data.scoresa[0].sub_code_score_111_2
+score10122 = await data.scoresa[0].sub_code_score_112_2
+score10132 = await data.scoresa[0].sub_code_score_113_2
+score10142 = await data.scoresa[0].sub_code_score_114_2
+score10152 = await data.scoresa[0].sub_code_score_115_2
+score1013= await data.scoresa[0].sub_code_score_101_3
+score1023= await data.scoresa[0].sub_code_score_102_3
+score1033 = await data.scoresa[0].sub_code_score_103_3
+score1043 = await data.scoresa[0].sub_code_score_104_3
+score1053 = await data.scoresa[0].sub_code_score_105_3
+score1063 = await data.scoresa[0].sub_code_score_106_3
+score1073 = await data.scoresa[0].sub_code_score_107_3
+score1083 = await data.scoresa[0].sub_code_score_108_3
+score1093 = await data.scoresa[0].sub_code_score_109_3
+score10103 = await data.scoresa[0].sub_code_score_110_3
+score10113 = await data.scoresa[0].sub_code_score_111_3
+score10123 = await data.scoresa[0].sub_code_score_112_3
+score10133 = await data.scoresa[0].sub_code_score_113_3
+score10143 = await data.scoresa[0].sub_code_score_114_3
+score10153 = await data.scoresa[0].sub_code_score_115_3
+
+
+a1012 = fetchquestion(request,1012)
+  a1022 = fetchquestion(request,1022)
+  a1032 = fetchquestion(request,1032)
+  a1042= fetchquestion(request,1042)
+  a1052= fetchquestion(request,1052)
+  a1062 = fetchquestion(request,1062)
+  a1072 = fetchquestion(request,1072)
+  a1082 = fetchquestion(request,1082)
+  a1092 = fetchquestion(request,1092)
+  a1102 = fetchquestion(request,1102)
+  a1112 = fetchquestion(request,1112)
+  a1122 = fetchquestion(request,1122)
+  a1132 = fetchquestion(request,1132)
+  a1142= fetchquestion(request,1142)
+  a1152 = fetchquestion(request,1152)
+  a1013 = fetchquestion(request,1013)
+  a1023 = fetchquestion(request,1023)
+  a1033 = fetchquestion(request,1033)
+  a1043= fetchquestion(request,1043)
+  a1053= fetchquestion(request,1053)
+  a1063 = fetchquestion(request,1063)
+  a1073 = fetchquestion(request,1073)
+  a1083 = fetchquestion(request,1083)
+  a1093 = fetchquestion(request,1093)
+  a1103 = fetchquestion(request,1103)
+  a1113 = fetchquestion(request,1113)
+  a1123 = fetchquestion(request,1123)
+  a1133 = fetchquestion(request,1133)
+  a1143= fetchquestion(request,1143)
+  a1153 = fetchquestion(request,1153)
+
+
+  document.getElementById("flexRadioDefault1").click(){
+    k = document.getElementById("span1").innerHTML
+    if(k=True){
+    document.getElementById("span1").className ="badge rounded-pill badge-success";
+    document.getElementById("span1").innerHTML = "Correct";
+  }
+  else{
+    document.getElementById("span1").className ="badge rounded-pill bg-warning text-dark";
+    document.getElementById("span1").innerHTML = "Wrong";
+  }
+  if(document.getElementById("span2").innerHTML=True){
+    document.getElementById("span2").className ="badge rounded-pill badge-success";
+    document.getElementById("span2").innerHTML = "Correct";
+  }
+  if(document.getElementById("span3").innerHTML=True){
+    document.getElementById("span3").className ="badge rounded-pill badge-success";
+    document.getElementById("span3").innerHTML = "Correct";
+  }
+  if(document.getElementById("span4").innerHTML=True){
+    document.getElementById("span4").className ="badge rounded-pill badge-success";
+    document.getElementById("span4").innerHTML = "Correct";
+  }
+  }
+
+
+  data = {
+    subcode:"a1011",
+    scoreobtained: "1",
+  }
+
+  async function postscore(url,data){
+
+
+
+    datafail = {
+      title:"I am success",
+      body: "0",
+      userid:2,
+    }
+    const options = {
+      method: 'post',
+      headers:{
+        'credentials': "include",
+        'Content-Type': 'application/json',
+      'X-Requested-With': "XMLHttpRequest"
+      },
+      body: JSON.stringify(data),
+    }
+
+    fetch(url,options)
+  }

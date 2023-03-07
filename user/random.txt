@@ -1,0 +1,100 @@
+
+
+def register(request):
+    form = RegisterForm(request.POST)
+    if form.is_valid():
+        form.save()
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        return redirect('home')
+    context = {
+        'form': form
+    }
+    return render(request, 'registerform.html', context)
+
+
+
+
+
+def loginpage(request):
+    if request.user.is_authenticated:
+        if request.user.Profile.role == 'BRU':
+            return render(request,"mainpage.html")
+        elif request.user.Profile.role == 'BRM':
+            return render(request,"brm_homepage.html")
+        elif request.user.Profile.role =='HOM':
+            return render(request, "hom_homepage.html")
+        elif request.user.Profile.role =='BRANCH':
+            return render(request, "branch_homepage.html")
+        elif request.user.Profile.role =='HOU':
+            return render(request, "hou_homepage.html")
+        else:
+            return render(request,"mainpage.html")
+    else:
+        return render(request, 'loginsample.html')
+
+def homepage(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            print(request.user)
+            if request.user.Profile.role == 'BRU':
+                return render(request,"mainpage.html")
+            elif request.user.Profile.role == 'BRM':
+                return render(request,"brm_homepage.html")
+            elif request.user.Profile.role =='HOM':
+                return render(request, "hom_homepage.html")
+            elif request.user.Profile.role =='BRANCH':
+                return render(request, "branch_homepage.html")
+            elif request.user.Profile.role =="HOU":
+                return render(request, "hou_homepage.html")
+            else:
+                return render(request,"mainpage.html")
+        else:
+            return render(request, 'loginsample.html', {'error_message': 'Enter your username & password'})
+    else:
+        if request.user.is_authenticated:
+            if request.user.Profile.role == 'BRU':
+                return render(request,"mainpage.html")
+            elif request.user.Profile.role == 'BRM':
+                return render(request,"brm_homepage.html")
+            elif request.user.Profile.role =='HOM':
+                return render(request, "hom_homepage.html")
+            elif request.user.Profile.role =='BRANCH':
+                return render(request, "branch_homepage.html")
+            elif request.user.Profile.role =="HOU":
+                return render(request, "hou_homepage.html")
+            else:
+                return render(request,"mainpage.html")
+        else:
+            return render(request, 'loginsample.html')
+
+
+def logout_request(request):
+    logout(request)
+    return redirect(request,'loginsample.html')
+
+
+def updateprofile(request):
+    form3 = updateprofileform()
+    return render(request,"createnewuser.html",{'form3':form3})
+
+def updateprofilereq(request):
+    form3=updateprofileform()
+    if request.method == 'POST':
+        jaan=request.user
+        jaan.Profile.employee_id = request.POST['employee_id']
+        jaan.Profile.branch_code=request.POST['branch_code']
+        jaan.Profile.birth_date = request.POST['birth_date']
+        jaan.Profile.supervisor_id= request.POST['supervisor_id']
+        jaan.Profile.Qualifications=request.POST['Qualifications']
+        jaan.Profile.role = request.POST['role']
+        Profile = jaan.Profile
+        Profile.save()
+        jaan.save()
+        return HttpResponseRedirect("/home")

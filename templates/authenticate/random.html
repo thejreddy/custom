@@ -1,0 +1,69 @@
+<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="loginModal">
+  Launch demo modal
+</button>
+</div>
+
+<!-- Modal -->
+<!-- Modal -->
+<div class="modal top fade"
+ id="loginModal"
+ tabindex="-1"
+ aria-labelledby="loginModalLabel"
+ aria-hidden="true"
+ data-mdb-backdrop="true"
+ data-mdb-keyboard="true">
+<div class="modal-dialog modal-fullscreen-sm-down">
+<div class="modal-content">
+
+
+  <div class="modal-header p-3 mb-2 bg-dark bg-gradient bg-opacity-80 text-white">
+l
+    <div class="container">
+
+
+        <div class="row">
+          <div class="col-md">
+          <h5 class="modal-title" id="loginModalLabel">The Pranlet Institute of Banking</h5>
+          <h6>Login/Signup</h6>
+              </div>
+          <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+
+
+  </div>
+
+
+
+  <div class="modal-body bg-light bg-gradient bg-opacity-20">
+
+    <div class="text-center mt-4 text-muted">
+        <h2>User Login</h2>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Enter Password">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password">
+            </div>
+            <button type="submit" class="btn btn-secondary mb-3">Login</button>
+            <p>Forgot password ??<a href="{% url 'reset_password' %}"> Click Here</a> To Reset</p>
+        </form>
+    </div>
+  
+
+  </div>
